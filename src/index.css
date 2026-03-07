@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+:root {
+  --bg-soft: #eef2f7;
+  --bg-deep: #0f172a;
+  --surface-soft: #eef2ff;
+  --text-primary: #172033;
+  --text-muted: #5a677f;
+  --accent-primary: #0f52ba;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", "Segoe UI", "Helvetica Neue", sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-soft);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

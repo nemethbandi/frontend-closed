@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
+import { navigateToCart } from "../../services/cartService";
 
 function getMobileLinkClasses(isActive) {
   return `block rounded-xl px-4 py-3 text-sm font-semibold transition ${
     isActive
       ? "bg-[var(--accent-primary)] text-white"
-      : "text-[var(--text-primary)] hover:bg-black/5"
+      : "text-[var(--text-primary)] hover:bg-[var(--surface-soft)]"
   }`;
 }
 
@@ -26,6 +27,16 @@ export default function MobileMenu({ isOpen, items, onNavigate }) {
             {item.label}
           </NavLink>
         ))}
+        <button
+          className="block w-full rounded-xl border border-black/10 px-4 py-3 text-left text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[var(--surface-soft)]"
+          onClick={() => {
+            onNavigate();
+            navigateToCart();
+          }}
+          type="button"
+        >
+          Cart
+        </button>
       </div>
     </nav>
   );
