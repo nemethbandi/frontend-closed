@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 import { navigateToCart } from "../../services/cartService";
 
 function getMobileLinkClasses(isActive) {
-  return `block rounded-xl px-4 py-3 text-sm font-semibold transition ${
+  return `block rounded-xl border px-4 py-3 text-sm font-semibold transition ${
     isActive
-      ? "bg-[var(--accent-primary)] text-[#F3FFB9]"
-      : "text-[var(--text-primary)] hover:bg-[var(--accent-primary)] hover:text-[#F3FFB9]"
+      ? "border-[var(--accent-primary)] !bg-[var(--accent-primary)] !text-[#F3FFB9]"
+      : "border-transparent text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:!bg-[var(--accent-primary)] hover:!text-[#F3FFB9]"
   }`;
 }
 
