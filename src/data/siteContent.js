@@ -3,8 +3,8 @@ export const siteMeta = {
   shortBrand: "CAI",
   tagline: "Collector-grade die-cast miniatures for automotive enthusiasts.",
   footerTagline: "Precision-crafted auto miniatures curated for serious collectors.",
-  primaryHotcakesCartPath: "/Store/ShoppingCart.aspx",
-  primaryHotcakesCheckoutPath: "/Store/Checkout.aspx",
+  primaryHotcakesCartPath: "/HotcakesStore/Cart",
+  primaryHotcakesCheckoutPath: "/KASSZA",
 };
 
 export const navigationItems = [
