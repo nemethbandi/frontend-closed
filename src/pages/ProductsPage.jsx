@@ -32,7 +32,7 @@ export default function ProductsPage() {
             <button
               className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
                 isActive
-                  ? "border-[var(--accent-primary)] bg-[var(--accent-primary)] text-[var(--color-mist-200)]"
+                  ? "active-cta"
                   : "border-[var(--border-strong)] bg-[var(--surface-base)] text-[var(--text-primary)] hover:bg-[var(--surface-muted)]"
               }`}
               key={brand.slug}
@@ -66,7 +66,7 @@ export default function ProductsPage() {
             Open Cart
           </button>
           <button
-            className="ui-btn ui-btn-primary"
+            className="ui-btn ui-btn-primary active-cta"
             onClick={navigateToCheckout}
             type="button"
           >

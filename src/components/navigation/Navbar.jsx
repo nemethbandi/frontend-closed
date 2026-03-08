@@ -5,7 +5,7 @@ import { navigationItems, siteMeta } from "../../data/siteContent";
 import { navigateToCart } from "../../services/cartService";
 
 function getLinkClasses(isActive) {
-  return `nav-pill ${isActive ? "nav-pill-active" : ""}`;
+  return `nav-pill ${isActive ? "nav-pill-active active-cta" : ""}`;
 }
 
 export default function Navbar() {

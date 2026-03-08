@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="space-y-3 text-sm">
           <p className="ui-eyebrow font-semibold text-[var(--text-primary)]">Checkout</p>
           <button
-            className="ui-btn ui-btn-primary"
+            className="ui-btn ui-btn-primary active-cta"
             onClick={navigateToCheckout}
             type="button"
           >

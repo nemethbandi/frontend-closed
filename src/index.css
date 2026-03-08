@@ -26,6 +26,39 @@
   box-sizing: border-box;
 }
 
+.closedai-app,
+.closedai-app *,
+.closedai-app *::before,
+.closedai-app *::after {
+  box-sizing: border-box;
+}
+
+.closedai-app {
+  font-family: "Plus Jakarta Sans", "Segoe UI", "Helvetica Neue", sans-serif;
+  color: var(--text-primary);
+  line-height: 1.5;
+  isolation: isolate;
+}
+
+.closedai-app a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.closedai-app button,
+.closedai-app input,
+.closedai-app select,
+.closedai-app textarea {
+  font: inherit;
+  color: inherit;
+}
+
+.closedai-app img,
+.closedai-app svg {
+  display: block;
+  max-width: 100%;
+}
+
 html,
 body,
 #root {
@@ -116,6 +149,18 @@ a {
 .nav-pill-active {
   background: var(--accent-primary);
   color: #f3ffb9;
+}
+
+.active-cta {
+  background: var(--accent-primary) !important;
+  border-color: var(--accent-primary) !important;
+  color: #f3ffb9 !important;
+}
+
+.active-cta:hover {
+  background: var(--accent-secondary) !important;
+  border-color: var(--accent-secondary) !important;
+  color: #f3ffb9 !important;
 }
 
 .brand-wordmark {
