@@ -2,16 +2,6 @@ import { Link } from "react-router-dom";
 import { navigationItems, siteMeta } from "../data/siteContent";
 import { navigateToCheckout } from "../services/cartService";
 
-const corporateLinks = [
-  { label: "Impresszum", to: "#" },
-  { label: "Privacy Policy", to: "#" },
-  { label: "Terms & Conditions", to: "#" },
-  { label: "Contact", to: "#" },
-  { label: "Shipping Info", to: "#" },
-  { label: "Returns", to: "#" },
-  { label: "FAQ", to: "#" },
-];
-
 export default function Footer() {
   return (
     <footer className="mt-16 border-t border-[var(--border-soft)] bg-[color-mix(in_srgb,var(--surface-base)_78%,var(--color-mist-200))]">
@@ -42,13 +32,6 @@ export default function Footer() {
       </div>
       <div className="border-t border-[var(--border-soft)] bg-[var(--color-ink-950)]">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-4 py-5 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-[rgba(243,255,185,0.86)]">
-            {corporateLinks.map((item) => (
-              <a className="transition hover:text-[var(--color-sun-200)]" href={item.to} key={item.label}>
-                {item.label}
-              </a>
-            ))}
-          </div>
           <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[rgba(243,255,185,0.72)]">
             <p>(c) {new Date().getFullYear()} {siteMeta.brandName}. All rights reserved.</p>
             <p>Registered office: 1051 Budapest, Collector Street 12.</p>
