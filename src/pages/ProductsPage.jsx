@@ -6,16 +6,19 @@ import { getBrands } from "../services/productService";
 const allFilter = { slug: "all", name: "All Brands" };
 
 export default function ProductsPage() {
-  const brandFilters = [allFilter, ...getBrands()];
+  const availableBrands = getBrands();
+  const brandFilters = [allFilter, ...availableBrands];
+  const brandBySlug = Object.fromEntries(availableBrands.map((brand) => [brand.slug, brand]));
   const brandNameBySlug = Object.fromEntries(
-    getBrands().map((brand) => [brand.slug, brand.name])
+    availableBrands.map((brand) => [brand.slug, brand.name])
   );
   const { activeBrand, filteredProducts, setBrandFilter } = useProductFilters();
+  const selectedBrand = activeBrand !== "all" ? brandBySlug[activeBrand] : null;
 
   return (
     <section className="space-y-8 pb-8">
       <header className="space-y-3">
-        <p className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">Catalog</p>
+        <p className="ui-eyebrow">Catalog</p>
         <h1 className="text-3xl font-semibold text-[var(--text-primary)] sm:text-4xl">Premium Auto Models</h1>
         <p className="max-w-3xl text-[var(--text-muted)]">
           Browse by brand, compare scales, and prepare your shortlist for future Hotcakes-powered cart and checkout.
@@ -27,10 +30,10 @@ export default function ProductsPage() {
           const isActive = activeBrand === brand.slug;
           return (
             <button
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+              className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
                 isActive
-                  ? "bg-[var(--accent-primary)] text-white"
-                  : "border border-black/10 bg-white text-[var(--text-primary)] hover:bg-[var(--surface-soft)]"
+                  ? "border-[var(--accent-primary)] bg-[var(--accent-primary)] text-[var(--color-mist-200)]"
+                  : "border-[var(--border-strong)] bg-[var(--surface-base)] text-[var(--text-primary)] hover:bg-[var(--surface-muted)]"
               }`}
               key={brand.slug}
               onClick={() => setBrandFilter(brand.slug)}
@@ -42,20 +45,28 @@ export default function ProductsPage() {
         })}
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/70 bg-white/80 p-4 shadow-[0_10px_35px_-20px_rgba(15,23,42,0.45)]">
-        <p className="text-sm text-[var(--text-muted)]">
-          Showing <span className="font-semibold text-[var(--text-primary)]">{filteredProducts.length}</span> models
-        </p>
+      <div className="ui-panel flex flex-wrap items-center justify-between gap-3 rounded-2xl p-4">
+        <div className="flex items-center gap-3">
+          {selectedBrand ? (
+            <div className="inline-flex items-center gap-2 rounded-full border border-[var(--border-soft)] bg-[var(--surface-base)] px-3 py-1.5">
+              <img alt={`${selectedBrand.name} logo`} className="h-7 w-7 object-contain" src={selectedBrand.logo} />
+              <span className="text-sm font-semibold text-[var(--text-primary)]">{selectedBrand.name}</span>
+            </div>
+          ) : null}
+          <p className="text-sm text-[var(--text-muted)]">
+            Showing <span className="font-semibold text-[var(--text-primary)]">{filteredProducts.length}</span> models
+          </p>
+        </div>
         <div className="flex gap-2">
           <button
-            className="rounded-xl border border-black/10 px-4 py-2 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[var(--surface-soft)]"
+            className="ui-btn ui-btn-secondary"
             onClick={navigateToCart}
             type="button"
           >
             Open Cart
           </button>
           <button
-            className="rounded-xl bg-[var(--accent-primary)] px-4 py-2 text-sm font-semibold text-white transition hover:brightness-110"
+            className="ui-btn ui-btn-primary"
             onClick={navigateToCheckout}
             type="button"
           >

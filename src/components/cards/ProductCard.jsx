@@ -3,12 +3,12 @@ import { formatPrice } from "../../utils/format";
 
 export default function ProductCard({ product, brandName }) {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-white/70 bg-white/90 shadow-[0_10px_35px_-20px_rgba(15,23,42,0.5)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_45px_-20px_rgba(15,23,42,0.55)]">
-      <div className="relative h-44 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 p-5 text-white">
-        <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em]">
+    <article className="ui-card group overflow-hidden rounded-2xl transition hover:-translate-y-0.5 hover:border-[var(--border-strong)]">
+      <div className="relative h-44 bg-gradient-to-br from-[#162521] via-[#23332f] to-[#3C474B] p-5 text-[var(--color-mist-200)]">
+        <span className="inline-flex rounded-full border border-[rgba(243,255,185,0.3)] bg-[rgba(243,255,185,0.12)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em]">
           {product.badge}
         </span>
-        <p className="absolute bottom-4 right-4 text-xs uppercase tracking-[0.16em] text-white/70">
+        <p className="absolute bottom-4 right-4 text-xs uppercase tracking-[0.16em] text-[rgba(243,255,185,0.72)]">
           {product.scale}
         </p>
       </div>
@@ -26,7 +26,7 @@ export default function ProductCard({ product, brandName }) {
         </div>
 
         <button
-          className="w-full rounded-xl bg-[var(--accent-primary)] px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+          className="ui-btn ui-btn-primary w-full py-2.5"
           onClick={() => addToCart(product)}
           type="button"
         >

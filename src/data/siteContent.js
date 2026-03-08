@@ -1,6 +1,6 @@
 export const siteMeta = {
-  brandName: "Atelier Auto Models",
-  shortBrand: "AAM",
+  brandName: "ClosedAI",
+  shortBrand: "CAI",
   tagline: "Collector-grade die-cast miniatures for automotive enthusiasts.",
   footerTagline: "Precision-crafted auto miniatures curated for serious collectors.",
   primaryHotcakesCartPath: "/Store/ShoppingCart.aspx",
@@ -37,9 +37,9 @@ export const homeContent = {
 };
 
 export const aboutContent = {
-  introTitle: "About Atelier Auto Models",
+  introTitle: "About ClosedAI",
   introBody:
-    "Atelier Auto Models is a specialist storefront for premium automotive miniatures. We combine product curation, brand storytelling, and collector-first service.",
+    "ClosedAI is a specialist storefront for premium automotive miniatures. We combine product curation, brand storytelling, and collector-first service.",
   missionTitle: "Our Mission",
   missionBody:
     "Deliver a focused, high-quality catalog where every model represents automotive heritage, precise manufacturing, and long-term collectible value.",

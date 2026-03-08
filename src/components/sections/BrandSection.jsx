@@ -4,7 +4,7 @@ export default function BrandSection({ brands }) {
   return (
     <section className="space-y-6">
       <div className="space-y-2">
-        <p className="text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">Browse By Brand</p>
+        <p className="ui-eyebrow">Browse By Brand</p>
         <h2 className="text-2xl font-semibold text-[var(--text-primary)] sm:text-3xl">
           Explore iconic automotive houses
         </h2>

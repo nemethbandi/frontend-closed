@@ -5,11 +5,7 @@ import { navigationItems, siteMeta } from "../../data/siteContent";
 import { navigateToCart } from "../../services/cartService";
 
 function getLinkClasses(isActive) {
-  return `rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-    isActive
-      ? "bg-[var(--accent-primary)] text-white shadow-sm"
-      : "text-[var(--text-muted)] hover:bg-[var(--surface-soft)] hover:text-[var(--text-primary)]"
-  }`;
+  return `nav-pill ${isActive ? "nav-pill-active" : ""}`;
 }
 
 export default function Navbar() {
@@ -26,13 +22,13 @@ export default function Navbar() {
   );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-black/5 bg-white/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-[var(--border-soft)] bg-[color-mix(in_srgb,var(--surface-base)_96%,var(--color-mist-200))] backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link className="group inline-flex items-center gap-3" to="/">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent-primary)] text-xs font-bold tracking-[0.14em] text-white">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent-primary)] text-xs font-bold tracking-[0.14em] text-[var(--color-mist-200)]">
             {siteMeta.shortBrand}
           </span>
-          <span className="text-base font-semibold tracking-wide text-[var(--text-primary)] md:text-lg">
+          <span className="brand-wordmark text-2xl text-[var(--text-primary)] md:text-[1.7rem]">
             {siteMeta.brandName}
           </span>
         </Link>
@@ -40,7 +36,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-2 md:flex">
           <nav className="items-center gap-1 md:flex">{desktopItems}</nav>
           <button
-            className="rounded-full border border-black/10 px-4 py-2 text-sm font-semibold text-[var(--text-primary)] transition hover:bg-[var(--surface-soft)]"
+            className="rounded-full border border-[var(--border-strong)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[#F3FFB9]"
             onClick={navigateToCart}
             type="button"
           >
@@ -51,7 +47,7 @@ export default function Navbar() {
         <button
           aria-expanded={isOpen}
           aria-label="Toggle navigation"
-          className="inline-flex rounded-lg p-2 text-[var(--text-primary)] transition hover:bg-[var(--surface-soft)] md:hidden"
+          className="inline-flex rounded-lg p-2 text-[var(--text-primary)] transition hover:bg-[var(--surface-muted)] md:hidden"
           onClick={() => setIsOpen((previous) => !previous)}
           type="button"
         >
