@@ -36,7 +36,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-2 md:flex">
           <nav className="items-center gap-1 md:flex">{desktopItems}</nav>
           <button
-            className="rounded-full border border-[var(--border-strong)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] transition hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-[#F3FFB9]"
+            className="nav-pill border border-[var(--border-strong)] text-[var(--text-primary)]"
             onClick={navigateToCart}
             type="button"
           >

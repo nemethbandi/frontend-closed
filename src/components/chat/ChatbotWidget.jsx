@@ -32,7 +32,7 @@ export default function ChatbotWidget() {
   const [isLoading, setIsLoading] = useState(false);
   const [chatHistory, setChatHistory] = useState([]);
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Szia! Kerdezz nyugodtan, segitek." }
+    { role: "assistant", content: "Szia! Miben segíthetek? 😊" }
   ]);
   const lastAssistantIndexRef = useRef(-1);
 

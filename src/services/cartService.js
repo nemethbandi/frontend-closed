@@ -1,8 +1,16 @@
 import { siteMeta } from "../data/siteContent";
 
+const HOTCAKES_ADD_TO_CART_PATH = "/HotcakesStore/Cart";
+
 let cartAdapter = {
   addToCart(product) {
-    console.info("Hotcakes adapter not connected yet. Product queued:", product);
+    if (!product?.sku) {
+      console.error("Cannot add to Hotcakes cart: missing product SKU.", product);
+      return;
+    }
+
+    const sku = encodeURIComponent(product.sku);
+    window.location.href = `${HOTCAKES_ADD_TO_CART_PATH}?AddSku=${sku}&AddSkuQty=1`;
   },
   navigateToCart() {
     window.location.href = siteMeta.primaryHotcakesCartPath;
