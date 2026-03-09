@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 
 const HISTORY_WINDOW = 6;
 const MAX_HISTORY_ITEMS = HISTORY_WINDOW * 8;
@@ -28,13 +28,11 @@ function RobotIcon({ className = "h-5 w-5" }) {
 export default function ChatbotWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [question, setQuestion] = useState("");
-  const [context, setContext] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [chatHistory, setChatHistory] = useState([]);
   const [messages, setMessages] = useState([
     { role: "assistant", content: "Szia! Miben segíthetek? 😊" }
   ]);
-  const lastAssistantIndexRef = useRef(-1);
 
   const recentHistory = useMemo(
     () => chatHistory.slice(-(HISTORY_WINDOW * 2)),
@@ -43,16 +41,9 @@ export default function ChatbotWidget() {
 
   async function askQuestion() {
     const trimmedQuestion = question.trim();
-    const trimmedContext = context.trim();
     if (!trimmedQuestion || isLoading) return;
 
-    const userMessage = { role: "user", content: trimmedQuestion };
-    setMessages((prev) => {
-      const next = [...prev, userMessage, { role: "assistant", content: "" }];
-      lastAssistantIndexRef.current = next.length - 1;
-      return next;
-    });
-
+    setMessages((prev) => [...prev, { role: "user", content: trimmedQuestion }]);
     setQuestion("");
     setIsLoading(true);
 
@@ -62,7 +53,6 @@ export default function ChatbotWidget() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           question: trimmedQuestion,
-          context: trimmedContext || null,
           history: recentHistory,
           history_window: HISTORY_WINDOW
         })
@@ -73,40 +63,11 @@ export default function ChatbotWidget() {
         throw new Error(errorBody || `Request failed (${response.status})`);
       }
 
-      if (!response.body) {
-        throw new Error("No response stream available");
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let fullAnswer = "";
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const chunk = decoder.decode(value, { stream: true });
-        fullAnswer += chunk;
-
-        setMessages((prev) =>
-          prev.map((message, index) =>
-            index === lastAssistantIndexRef.current
-              ? { ...message, content: fullAnswer }
-              : message
-          )
-        );
-      }
-
-      fullAnswer += decoder.decode();
+      const data = await response.json();
+      let fullAnswer = typeof data.answer === "string" ? data.answer : "";
       if (!fullAnswer.trim()) fullAnswer = "(empty response)";
 
-      setMessages((prev) =>
-        prev.map((message, index) =>
-          index === lastAssistantIndexRef.current
-            ? { ...message, content: fullAnswer }
-            : message
-        )
-      );
+      setMessages((prev) => [...prev, { role: "assistant", content: fullAnswer }]);
 
       setChatHistory((prev) => {
         const next = [
@@ -121,13 +82,7 @@ export default function ChatbotWidget() {
       });
     } catch (error) {
       const errorMessage = `Error: ${error.message}`;
-      setMessages((prev) =>
-        prev.map((message, index) =>
-          index === lastAssistantIndexRef.current
-            ? { ...message, content: errorMessage }
-            : message
-        )
-      );
+      setMessages((prev) => [...prev, { role: "assistant", content: errorMessage }]);
     } finally {
       setIsLoading(false);
     }
@@ -186,12 +141,6 @@ export default function ChatbotWidget() {
           </div>
 
           <div className="border-t border-[var(--border-soft)] p-3">
-            <textarea
-              value={context}
-              onChange={(event) => setContext(event.target.value)}
-              placeholder="Optional context"
-              className="mb-2 h-20 w-full resize-none rounded-xl border border-[var(--border-soft)] bg-[var(--surface-base)] px-3 py-2 text-sm outline-none transition focus:border-[var(--accent-secondary)] focus:ring-2 focus:ring-[rgba(136,162,170,0.25)]"
-            />
             <div className="flex gap-2">
               <input
                 value={question}
@@ -249,3 +198,5 @@ export default function ChatbotWidget() {
     </div>
   );
 }
+
+
