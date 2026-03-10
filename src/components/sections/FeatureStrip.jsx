@@ -1,15 +1,15 @@
 const features = [
   {
-    title: "Authentic Releases",
-    body: "Licensed models from trusted premium manufacturers.",
+    title: "Hiteles kiadások",
+    body: "Licencelt modellek megbízható prémium gyártóktól.",
   },
   {
-    title: "Collector Packaging",
-    body: "Secure handling standards for boxed and display-grade items.",
+    title: "Gyűjtői csomagolás",
+    body: "Biztonságos kezelés a dobozos és vitrinfokozatú darabokhoz.",
   },
   {
-    title: "Curated Catalog",
-    body: "Focused selection over crowded inventory noise.",
+    title: "Kurált katalógus",
+    body: "Fókuszált válogatás a zsúfolt kínálat zaján túl.",
   },
 ];
 

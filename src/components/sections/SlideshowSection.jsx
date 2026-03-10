@@ -7,21 +7,21 @@ import slideThree from "../../assets/slideshow-3.jpg";
 const slides = [
   {
     image: slideOne,
-    eyebrow: "Collector Spotlight",
-    title: "Timeless legends in scale form",
-    description: "Discover handpicked models that capture iconic design, detail, and motorsport heritage.",
+    eyebrow: "Gyűjtői fókusz",
+    title: "Időtlen legendák méretarányban",
+    description: "Fedezd fel a kézzel válogatott modelleket, amelyek az ikonikus dizájnt, a részleteket és a motorsport örökséget idézik.",
   },
   {
     image: slideTwo,
-    eyebrow: "Premium Craft",
-    title: "Built for serious collections",
-    description: "From panel lines to interior finishes, every piece is curated for long-term value.",
+    eyebrow: "Prémium kézművesség",
+    title: "Komoly gyűjteményekre tervezve",
+    description: "A panelvonalaktól a belső kidolgozásig minden darab hosszú távú értékre van válogatva.",
   },
   {
     image: slideThree,
-    eyebrow: "New Arrivals",
-    title: "Your next centerpiece is waiting",
-    description: "Explore fresh releases from trusted makers and expand your collection with confidence.",
+    eyebrow: "Új érkezések",
+    title: "A következő központi darabod már vár",
+    description: "Fedezd fel a megbízható gyártók friss kiadásait, és bővítsd a gyűjteményed magabiztosan.",
   },
 ];
 
@@ -66,7 +66,7 @@ export default function SlideshowSection() {
               className="ui-btn inline-flex rounded-xl border border-[#FFFD98] bg-[#FFFD98] px-5 py-2.5 text-sm font-semibold !text-[#162521] hover:bg-[#F3FFB9] hover:!text-[#162521]"
               to="/products"
             >
-              Shop now
+              Vásárlás
             </Link>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function SlideshowSection() {
           const isActive = index === activeIndex;
           return (
             <button
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={`Ugrás a(z) ${index + 1}. diára`}
               className={`h-2.5 w-2.5 rounded-full border transition-all ${isActive ? "border-[#FFFD98] bg-[#FFFD98]" : "border-[rgba(243,255,185,0.45)] bg-transparent hover:bg-[rgba(243,255,185,0.5)]"}`}
               key={slide.title}
               onClick={() => setActiveIndex(index)}

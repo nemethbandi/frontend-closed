@@ -1,11 +1,14 @@
+import { useState } from "react";
 import ProductCard from "../components/cards/ProductCard";
+import ProductDetailModal from "../components/products/ProductDetailModal";
 import { useProductFilters } from "../hooks/useProductFilters";
 import { navigateToCart, navigateToCheckout } from "../services/cartService";
 import { getBrands } from "../services/productService";
 
-const allFilter = { slug: "all", name: "All Brands" };
+const allFilter = { slug: "all", name: "Összes márka" };
 
 export default function ProductsPage() {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const availableBrands = getBrands();
   const brandFilters = [allFilter, ...availableBrands];
   const brandBySlug = Object.fromEntries(availableBrands.map((brand) => [brand.slug, brand]));
@@ -14,14 +17,16 @@ export default function ProductsPage() {
   );
   const { activeBrand, filteredProducts, setBrandFilter } = useProductFilters();
   const selectedBrand = activeBrand !== "all" ? brandBySlug[activeBrand] : null;
+  const selectedBrandName =
+    selectedProduct ? brandNameBySlug[selectedProduct.brand] || selectedProduct.brand : "";
 
   return (
     <section className="space-y-8 pb-8">
       <header className="space-y-3">
-        <p className="ui-eyebrow">Catalog</p>
-        <h1 className="text-3xl font-semibold text-[var(--text-primary)] sm:text-4xl">Premium Auto Models</h1>
+        <p className="ui-eyebrow">Katalógus</p>
+        <h1 className="text-3xl font-semibold text-[var(--text-primary)] sm:text-4xl">Prémium autómodellek</h1>
         <p className="max-w-3xl text-[var(--text-muted)]">
-          Browse by brand, compare scales, and prepare your shortlist for future Hotcakes-powered cart and checkout.
+          Böngéssz márkák szerint, hasonlítsd össze a méretarányokat, és készítsd elő a listád a Hotcakes kosárhoz és pénztárhoz.
         </p>
       </header>
 
@@ -54,7 +59,7 @@ export default function ProductsPage() {
             </div>
           ) : null}
           <p className="text-sm text-[var(--text-muted)]">
-            Showing <span className="font-semibold text-[var(--text-primary)]">{filteredProducts.length}</span> models
+            Megjelenítve: <span className="font-semibold text-[var(--text-primary)]">{filteredProducts.length}</span> modell
           </p>
         </div>
         <div className="flex gap-2">
@@ -63,14 +68,14 @@ export default function ProductsPage() {
             onClick={navigateToCart}
             type="button"
           >
-            Open Cart
+            Kosár megnyitása
           </button>
           <button
             className="ui-btn ui-btn-primary active-cta"
             onClick={navigateToCheckout}
             type="button"
           >
-            Checkout
+            Pénztár
           </button>
         </div>
       </div>
@@ -81,9 +86,18 @@ export default function ProductsPage() {
             brandName={brandNameBySlug[product.brand] || product.brand}
             key={product.id}
             product={product}
+            onOpen={setSelectedProduct}
           />
         ))}
       </div>
+
+      {selectedProduct ? (
+        <ProductDetailModal
+          brandName={selectedBrandName}
+          onClose={() => setSelectedProduct(null)}
+          product={selectedProduct}
+        />
+      ) : null}
     </section>
   );
 }

@@ -35,7 +35,7 @@ export default function MobileMenu({ isOpen, items, onNavigate }) {
           }}
           type="button"
         >
-          Cart
+          Kosár
         </button>
       </div>
     </nav>

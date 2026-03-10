@@ -16,7 +16,7 @@ export default function BrandCard({ brand }) {
       </div>
       <p className="text-sm text-[var(--text-muted)]">{brand.blurb}</p>
       <p className="mt-4 text-sm font-semibold text-[var(--text-primary)] transition group-hover:text-[var(--accent-secondary)]">
-        Explore models
+        Modellek megtekintése
       </p>
     </Link>
   );

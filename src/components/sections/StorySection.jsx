@@ -6,7 +6,7 @@ export default function StorySection() {
   return (
     <section className="ui-panel grid gap-6 rounded-3xl p-6 sm:p-8 lg:grid-cols-[1.2fr_1fr]">
       <div className="space-y-4">
-        <p className="ui-eyebrow">Collector Standard</p>
+        <p className="ui-eyebrow">Gyűjtői szint</p>
         <h2 className="text-2xl font-semibold text-[var(--text-primary)] sm:text-3xl">{story.heading}</h2>
         <p className="text-[var(--text-muted)]">{story.body}</p>
       </div>

@@ -51,21 +51,21 @@ export async function getProducts() {
     });
 
     if (!response.ok) {
-      throw new Error(`Hotcakes products request failed with status ${response.status}`);
+      throw new Error(`A Hotcakes terméklekérés sikertelen, státusz: ${response.status}`);
     }
 
     const data = await response.json();
     const hotcakesProducts = data?.Content?.Products;
 
     if (!Array.isArray(hotcakesProducts)) {
-      throw new Error("Hotcakes products payload does not contain data.Content.Products array");
+      throw new Error("A Hotcakes válasz nem tartalmazza a data.Content.Products tömböt.");
     }
 
     return products.map((fallbackProduct, index) =>
       mapHotcakesProduct(hotcakesProducts[index], fallbackProduct)
     );
   } catch (error) {
-    console.error("Failed to load products from Hotcakes API. Falling back to local products.", error);
+    console.error("Nem sikerült betölteni a termékeket a Hotcakes API-ból. Helyi adatokra váltunk.", error);
     return products;
   }
 }

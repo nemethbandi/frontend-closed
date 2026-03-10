@@ -1,65 +1,65 @@
 export const siteMeta = {
   brandName: "ClosedAI",
   shortBrand: "CAI",
-  tagline: "Collector-grade die-cast miniatures for automotive enthusiasts.",
-  footerTagline: "Precision-crafted auto miniatures curated for serious collectors.",
+  tagline: "Prémium die-cast miniatűrök autórajongóknak.",
+  footerTagline: "Precízen kidolgozott autó miniatűrök komoly gyűjtőknek.",
   primaryHotcakesCartPath: "/HotcakesStore/Cart",
   primaryHotcakesCheckoutPath: "/KASSZA",
 };
 
 export const navigationItems = [
-  { to: "/", label: "Home" },
-  { to: "/products", label: "Products" },
-  { to: "/about", label: "About Us" },
+  { to: "/", label: "Főoldal" },
+  { to: "/products", label: "Termékek" },
+  { to: "/about", label: "Rólunk" },
 ];
 
 export const homeContent = {
   hero: {
-    eyebrow: "Premium Die-Cast Collection",
-    headline: "Curated model cars that honor iconic automotive design.",
+    eyebrow: "Prémium die-cast kollekció",
+    headline: "Kurált modellautók, amelyek tisztelegnek az ikonikus autódesign előtt.",
     subheadline:
-      "From track legends to limited-series road cars, discover premium-scale miniatures selected for collectors who value detail and authenticity.",
-    primaryCta: { label: "View Collection", to: "/products" },
-    secondaryCta: { label: "About Us", to: "/about" },
+      "A pályalegendáktól a limitált szériás utcai autókig, fedezd fel a részletekre és hitelességre építő gyűjtőknek válogatott miniatűröket.",
+    primaryCta: { label: "Kollekció megtekintése", to: "/products" },
+    secondaryCta: { label: "Rólunk", to: "/about" },
     highlightStats: [
-      { label: "Collector brands", value: "6+" },
-      { label: "Limited editions", value: "120+" },
-      { label: "Scale range", value: "1:18 - 1:64" },
+      { label: "Gyűjtői márkák", value: "6+" },
+      { label: "Limitált kiadások", value: "120+" },
+      { label: "Méretarány tartomány", value: "1:18 - 1:64" },
     ],
   },
   story: {
-    heading: "Built for collectors, not impulse buyers.",
-    body: "Each piece in our selection is reviewed for paint quality, panel alignment, interior fidelity, and finishing details before it appears in our catalog.",
-    featureTitle: "Craftsmanship Promise",
+    heading: "Gyűjtőknek építve, nem impulzusvásárlóknak.",
+    body: "Minden darabot ellenőrzünk a fényezés, a panelillesztés, a belső részletek és a kidolgozás alapján, mielőtt bekerülne a kínálatba.",
+    featureTitle: "Minőségi ígéret",
     featureBody:
-      "We prioritize verified releases, trusted makers, and condition transparency so your collection keeps long-term value.",
+      "Ellenőrzött kiadásokat, megbízható gyártókat és átlátható állapotleírást preferálunk, hogy a gyűjteményed hosszú távon értékes maradjon.",
   },
 };
 
 export const aboutContent = {
-  introTitle: "About ClosedAI",
+  introTitle: "A ClosedAI-ról",
   introBody:
-    "ClosedAI is a specialist storefront for premium automotive miniatures. We combine product curation, brand storytelling, and collector-first service.",
-  missionTitle: "Our Mission",
+    "A ClosedAI prémium autó miniatűrökre specializált bolt. A termékcurációt, a márkatörténeteket és a gyűjtőközpontú szolgáltatást egyesítjük.",
+  missionTitle: "Küldetésünk",
   missionBody:
-    "Deliver a focused, high-quality catalog where every model represents automotive heritage, precise manufacturing, and long-term collectible value.",
+    "Egy fókuszált, magas minőségű katalógust kínálunk, ahol minden modell az autós örökséget, a precíz gyártást és a hosszú távú gyűjtői értéket képviseli.",
   qualityBlocks: [
     {
-      title: "Authenticity Focus",
-      body: "We prioritize officially licensed releases and transparent product provenance.",
+      title: "Hitelességi fókusz",
+      body: "Elsődlegesek az hivatalosan licencelt kiadások és az átlátható származás.",
     },
     {
-      title: "Collector-Level Curation",
-      body: "Every catalog update is reviewed with scale accuracy and finish quality in mind.",
+      title: "Gyűjtői szintű válogatás",
+      body: "Minden frissítést méretarányos pontosság és felületminőség szerint ellenőrzünk.",
     },
     {
-      title: "Future Commerce Ready",
-      body: "Our frontend is structured to connect seamlessly with upcoming Hotcakes cart workflows.",
+      title: "Jövőbiztos kereskedelem",
+      body: "Frontendünk úgy épül fel, hogy zökkenőmentesen illeszkedjen a közelgő Hotcakes kosárfolyamatokhoz.",
     },
   ],
   trustStats: [
-    { label: "Brands represented", value: "25+" },
-    { label: "Curated models", value: "1,800+" },
-    { label: "Collector community", value: "14 countries" },
+    { label: "Képviselt márkák", value: "25+" },
+    { label: "Kurált modellek", value: "1 800+" },
+    { label: "Gyűjtői közösség", value: "14 ország" },
   ],
 };

@@ -1,9 +1,19 @@
-import { addToCart } from "../../services/cartService";
 import { formatPrice } from "../../utils/format";
 
-export default function ProductCard({ product, brandName }) {
+export default function ProductCard({ product, brandName, onOpen }) {
   return (
-    <article className="ui-card group flex h-full flex-col overflow-hidden rounded-2xl transition hover:-translate-y-0.5 hover:border-[var(--border-strong)]">
+    <article
+      className="ui-card group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl transition hover:-translate-y-0.5 hover:border-[var(--border-strong)]"
+      onClick={() => onOpen?.(product)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onOpen?.(product);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+    >
       <div className="relative h-44 overflow-hidden bg-gradient-to-br from-[#162521] via-[#23332f] to-[#3C474B] p-5 text-[var(--color-mist-200)]">
         {product.image ? (
           <img
@@ -36,10 +46,13 @@ export default function ProductCard({ product, brandName }) {
 
         <button
           className="ui-btn ui-btn-primary active-cta mt-auto w-full py-2.5"
-          onClick={() => addToCart(product)}
+          onClick={(event) => {
+            event.stopPropagation();
+            onOpen?.(product);
+          }}
           type="button"
         >
-          Add to Cart
+          Kosárba
         </button>
       </div>
     </article>

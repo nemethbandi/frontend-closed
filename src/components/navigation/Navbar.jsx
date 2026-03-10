@@ -40,13 +40,13 @@ export default function Navbar() {
             onClick={navigateToCart}
             type="button"
           >
-            Cart
+            Kosár
           </button>
         </div>
 
         <button
           aria-expanded={isOpen}
-          aria-label="Toggle navigation"
+          aria-label="Navigáció megnyitása"
           className="inline-flex rounded-lg p-2 text-[var(--text-primary)] transition hover:bg-[var(--surface-muted)] md:hidden"
           onClick={() => setIsOpen((previous) => !previous)}
           type="button"
