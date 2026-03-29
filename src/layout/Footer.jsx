@@ -1,5 +1,4 @@
-﻿import { Link } from "react-router-dom";
-import { navigationItems, siteMeta } from "../data/siteContent";
+﻿import { navigationItems, siteMeta } from "../data/siteContent";
 import { navigateToCheckout } from "../services/cartService";
 
 export default function Footer() {
@@ -14,9 +13,9 @@ export default function Footer() {
         <div className="space-y-3 text-sm">
           <p className="ui-eyebrow font-semibold text-[var(--text-primary)]">Navigáció</p>
           {navigationItems.map((item) => (
-            <Link className="block text-[var(--text-muted)] transition hover:text-[var(--text-primary)]" key={item.to} to={item.to}>
+            <a className="block text-[var(--text-muted)] transition hover:text-[var(--text-primary)]" href={item.to} key={item.to}>
               {item.label}
-            </Link>
+            </a>
           ))}
         </div>
         <div className="space-y-3 text-sm">
@@ -41,3 +40,4 @@ export default function Footer() {
     </footer>
   );
 }
+

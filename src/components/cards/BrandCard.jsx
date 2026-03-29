@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
 import { buildProductsUrl } from "../../services/navigationService";
 
 export default function BrandCard({ brand }) {
   return (
-    <Link
+    <a
       className="ui-card group overflow-hidden rounded-2xl p-5 transition hover:-translate-y-0.5 hover:border-[var(--border-strong)]"
-      to={buildProductsUrl(brand.slug)}
+      href={buildProductsUrl(brand.slug)}
     >
       <div className={`mb-4 h-28 rounded-xl bg-gradient-to-br ${brand.accent} p-4 text-[var(--color-mist-200)]`}>
         <div className="flex items-start justify-between gap-3">
@@ -18,6 +17,6 @@ export default function BrandCard({ brand }) {
       <p className="mt-4 text-sm font-semibold text-[var(--text-primary)] transition group-hover:text-[var(--accent-secondary)]">
         Modellek megtekintése
       </p>
-    </Link>
+    </a>
   );
 }

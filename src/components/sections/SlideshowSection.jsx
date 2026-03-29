@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import slideOne from "../../assets/slidehow-1.jpg";
+import slideOne from "../../assets/slideshow-1.jpg";
 import slideTwo from "../../assets/slideshow-2.jpg";
 import slideThree from "../../assets/slideshow-3.jpg";
 
@@ -9,18 +8,18 @@ const slides = [
     image: slideOne,
     eyebrow: "Gyűjtői fókusz",
     title: "Időtlen legendák méretarányban",
-    description: "Fedezd fel a kézzel válogatott modelleket, amelyek az ikonikus dizájnt, a részleteket és a motorsport örökséget idézik.",
+    description: "Fedezd fel a kézzel válogatott prémium sportkocsi replikákat, amelyek az ikonikus dizájnt, a részleteket és a motorsport örökséget idézik.",
   },
   {
     image: slideTwo,
     eyebrow: "Prémium kézművesség",
     title: "Komoly gyűjteményekre tervezve",
-    description: "A panelvonalaktól a belső kidolgozásig minden darab hosszú távú értékre van válogatva.",
+    description: "A panelvonalaktól a belső kidolgozásig minden sportkocsi modell hosszú távú értékre van válogatva.",
   },
   {
     image: slideThree,
     eyebrow: "Új érkezések",
-    title: "A következő központi darabod már vár",
+    title: "A következő prémium replikád már vár",
     description: "Fedezd fel a megbízható gyártók friss kiadásait, és bővítsd a gyűjteményed magabiztosan.",
   },
 ];
@@ -62,12 +61,12 @@ export default function SlideshowSection() {
             <p className="text-xs uppercase tracking-[0.22em] text-[rgba(243,255,185,0.88)]">{slides[activeIndex].eyebrow}</p>
             <h1 className="max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">{slides[activeIndex].title}</h1>
             <p className="max-w-2xl text-sm text-[rgba(243,255,185,0.9)] sm:text-base">{slides[activeIndex].description}</p>
-            <Link
+            <a
               className="ui-btn inline-flex rounded-xl border border-[#FFFD98] bg-[#FFFD98] px-5 py-2.5 text-sm font-semibold !text-[#162521] hover:bg-[#F3FFB9] hover:!text-[#162521]"
-              to="/products"
+              href="/TERMÉKEK"
             >
               Vásárlás
-            </Link>
+            </a>
           </div>
         </div>
       </div>

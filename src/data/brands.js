@@ -1,4 +1,4 @@
-import bmwLogo from "../assets/bmw-logo.svg";
+﻿import bmwLogo from "../assets/bmw-logo.svg";
 import ferrariLogo from "../assets/ferrari-logo.svg";
 import lamborghiniLogo from "../assets/lamborghini-logo.svg";
 import mclarenLogo from "../assets/mclaren-logo.svg";
@@ -18,7 +18,7 @@ export const brands = [
     slug: "porsche",
     name: "Porsche",
     origin: "Stuttgart, Németország",
-    blurb: "Precíz mérnöki munka és endurance legendastátusz.",
+    blurb: "Precíz mérnöki munka és legendás endurance verseny teljseítmény.",
     accent: "from-[#3C474B] to-[#162521]",
     logo: porscheLogo,
   },
@@ -26,7 +26,7 @@ export const brands = [
     slug: "lamborghini",
     name: "Lamborghini",
     origin: "Sant'Agata, Olaszország",
-    blurb: "Merész sziluettek, drámai arányok, tiszta színpad.",
+    blurb: "Merész sziluettek, drámai arányok, tiszta teljesítmény.",
     accent: "from-[#3C474B] via-[#88A2AA] to-[#162521]",
     logo: lamborghiniLogo,
   },
@@ -34,7 +34,7 @@ export const brands = [
     slug: "mercedes",
     name: "Mercedes",
     origin: "Stuttgart, Németország",
-    blurb: "Luxusörökség és teljesítményinnováció egyben.",
+    blurb: "Prémium örökség és precíz innováció egyben.",
     accent: "from-[#88A2AA] to-[#3C474B]",
     logo: mercedesLogo,
   },
@@ -50,7 +50,7 @@ export const brands = [
     slug: "mclaren",
     name: "McLaren",
     origin: "Woking, Egyesült Királyság",
-    blurb: "Könnyűsúlyú mérnökség és pályáról örökölt aerodinamika.",
+    blurb: "Könnyűsúlyú felépítés és pályáról örökölt aerodinamika.",
     accent: "from-[#3C474B] to-[#162521]",
     logo: mclarenLogo,
   },

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { homeContent } from "../../data/siteContent";
 
 export default function HeroSection() {
@@ -16,18 +15,18 @@ export default function HeroSection() {
           <p className="max-w-2xl text-sm text-[rgba(243,255,185,0.9)] sm:text-base">{hero.subheadline}</p>
 
           <div className="flex flex-wrap gap-3">
-            <Link
+            <a
               className="ui-btn rounded-xl border border-[#FFFD98] bg-[#FFFD98] px-5 py-2.5 text-sm font-semibold !text-[#162521] hover:bg-[#F3FFB9] hover:!text-[#162521]"
-              to={hero.primaryCta.to}
+              href={hero.primaryCta.to}
             >
               {hero.primaryCta.label}
-            </Link>
-            <Link
+            </a>
+            <a
               className="ui-btn rounded-xl border border-[rgba(243,255,185,0.45)] bg-[rgba(243,255,185,0.06)] px-5 py-2.5 text-sm font-semibold text-[var(--color-mist-200)] hover:bg-[rgba(243,255,185,0.18)]"
-              to={hero.secondaryCta.to}
+              href={hero.secondaryCta.to}
             >
               {hero.secondaryCta.label}
-            </Link>
+            </a>
           </div>
         </div>
 
