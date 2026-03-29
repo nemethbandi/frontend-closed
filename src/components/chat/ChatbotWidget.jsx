@@ -1,12 +1,5 @@
 ﻿import { useMemo, useState } from "react";
 
-const HISTORY_WINDOW = 6;
-const MAX_HISTORY_ITEMS = HISTORY_WINDOW * 8;
-const STARTER_QUESTIONS = [
-  "Mik a legkelendőbb termékek?",
-  "Ajánlj nekem egy modellt!"
-];
-
 function RobotIcon({ className = "h-5 w-5" }) {
   return (
     <svg
@@ -52,17 +45,56 @@ function TypingBubble() {
 }
 
 export default function ChatbotWidget() {
+  const pageConfig =
+  typeof window !== "undefined" && window.closedAiConfig
+    ? window.closedAiConfig
+    : {
+        enabled: true,
+        endpoint: "/closedai-api/question",
+        historyWindow: 6,
+        title: "A te asszisztensed",
+        inputPlaceholder: "Írd be a kérdésed...",
+        welcomeMessage: "Szia! Miben segíthetek?",
+        starterQuestions: [
+          "Mik a legkelendőbb termékek?",
+          "Ajánlj nekem egy modellt!"
+        ]
+      };
+
+  if (!pageConfig?.enabled) {
+    return null;
+  }
+
+  const HISTORY_WINDOW =
+    Number.isInteger(pageConfig.historyWindow) && pageConfig.historyWindow > 0
+      ? pageConfig.historyWindow
+      : 6;
+
+  const MAX_HISTORY_ITEMS = HISTORY_WINDOW * 8;
+
+  const STARTER_QUESTIONS = Array.isArray(pageConfig.starterQuestions) && pageConfig.starterQuestions.length > 0
+    ? pageConfig.starterQuestions
+    : [
+        "Mik a legkelendőbb termékek?",
+        "Ajánlj nekem egy modellt!"
+      ];
+
+  const endpoint = pageConfig.endpoint || "/closedai-api/question";
+  const title = pageConfig.title || "A te asszisztensed";
+  const inputPlaceholder = pageConfig.inputPlaceholder || "Írd be a kérdésed...";
+  const welcomeMessage = pageConfig.welcomeMessage || "Szia! Miben segíthetek?";
+
   const [isOpen, setIsOpen] = useState(false);
   const [question, setQuestion] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [chatHistory, setChatHistory] = useState([]);
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Szia! Miben segíthetek?" }
+    { role: "assistant", content: welcomeMessage }
   ]);
 
   const recentHistory = useMemo(
     () => chatHistory.slice(-(HISTORY_WINDOW * 2)),
-    [chatHistory]
+    [chatHistory, HISTORY_WINDOW]
   );
 
   const hasUserMessages = messages.some((message) => message.role === "user");
@@ -76,7 +108,7 @@ export default function ChatbotWidget() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/closedai-api/question", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -124,6 +156,7 @@ export default function ChatbotWidget() {
           30% { transform: translateY(-3px); opacity: 1; }
         }
       `}</style>
+
       {isOpen ? (
         <div className="ui-panel flex h-[32rem] w-[calc(100vw-2rem)] max-w-sm flex-col overflow-hidden rounded-2xl border border-[var(--border-soft)] bg-[var(--surface-base)]">
           <div className="flex items-center justify-between border-b border-[var(--border-soft)] bg-[color-mix(in_srgb,var(--surface-base)_86%,var(--color-mist-200))] px-4 py-3">
@@ -132,13 +165,14 @@ export default function ChatbotWidget() {
                 <RobotIcon className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm font-semibold">A te asszisztensed</p>
+                <p className="text-sm font-semibold">{title}</p>
                 <div className="flex items-center gap-1.5 text-xs text-[var(--text-muted)]">
                   <span className="h-2 w-2 rounded-full bg-[#37d67a]" aria-hidden="true" />
                   <span>Online</span>
                 </div>
               </div>
             </div>
+
             <button
               type="button"
               onClick={() => setIsOpen(false)}
@@ -192,6 +226,7 @@ export default function ChatbotWidget() {
                 )}
               </div>
             ))}
+
             {isLoading && <TypingBubble />}
           </div>
 
@@ -207,7 +242,7 @@ export default function ChatbotWidget() {
                   }
                 }}
                 type="text"
-                placeholder="Írd be a kérdésed..."
+                placeholder={inputPlaceholder}
                 className="h-10 flex-1 rounded-xl border border-[var(--border-soft)] bg-[var(--surface-base)] px-3 text-sm outline-none transition focus:border-[var(--accent-secondary)] focus:ring-2 focus:ring-[rgba(136,162,170,0.25)]"
               />
               <button
